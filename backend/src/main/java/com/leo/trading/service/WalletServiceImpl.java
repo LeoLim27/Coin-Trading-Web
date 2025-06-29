@@ -1,5 +1,6 @@
 package com.leo.trading.service;
 
+import com.leo.trading.domain.OrderType;
 import com.leo.trading.modal.Order;
 import com.leo.trading.modal.User;
 import com.leo.trading.modal.Wallet;
@@ -68,10 +69,20 @@ public class WalletServiceImpl implements WalletService {
   }
 
   @Override
-  public Wallet payOrderPayment(Order orer, User user) {
+  public Wallet payOrderPayment(Order order, User user) throws Exception{
     Wallet wallet = getUserWallet(user);
 
-
-    return null;
+    // subtract from the balance if buy
+    if (order.getOrderType().equals(OrderType.BUY)) {
+      BigDecimal newBalance = wallet.getBalance().subtract(order.getPrice());
+      if (newBalance.compareTo(order.getPrice()) < 0) {
+        throw new Exception("Insufficient funds for this transaction");
+      }
+      wallet.setBalance(newBalance);
+    } else {
+      BigDecimal newBalance = wallet.getBalance().add(order.getPrice());
+      wallet.setBalance(newBalance);
+    }
+    return walletRepository.save(wallet);
   }
 }

@@ -15,7 +15,7 @@ public interface WalletService {
 
   Wallet walletToWalletTransfer(User sender, Wallet receiverWallet, Long amount) throws Exception;
 
-  Wallet payOrderPayment(Order orer, User user);
+  Wallet payOrderPayment(Order orer, User user) throws Exception;
 
 
 }
