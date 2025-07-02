@@ -8,6 +8,11 @@ import lombok.Data;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+/**
+ * This class contains user info, order item, price, order type and time stamp.
+ * Order details (coin info, quantity, buy price, sell price are stored in order item)
+ * Order and Order Item are mapped to each other (one order contains one order item)
+ */
 @Data
 @Entity
 public class Order {

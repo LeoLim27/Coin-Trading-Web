@@ -4,6 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
+/**
+ * This class contains order item's detail; coin info, quantity, sell/buy price and Order instance to be mapped.
+ */
 @Entity
 @Data
 public class OrderItem {

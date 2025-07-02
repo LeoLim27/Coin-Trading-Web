@@ -1,8 +1,10 @@
 package com.leo.trading.controller;
 
+import com.leo.trading.modal.Order;
 import com.leo.trading.modal.User;
 import com.leo.trading.modal.Wallet;
 import com.leo.trading.modal.WalletTransaction;
+import com.leo.trading.service.OrderService;
 import com.leo.trading.service.UserService;
 import com.leo.trading.service.WalletService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,9 @@ public class WalletController {
 
   @Autowired
   private UserService userService;
+
+  @Autowired
+  private OrderService orderService;
 
   @GetMapping("/api/wallet")
   public ResponseEntity<Wallet> getUserWallet(@RequestHeader("Authorization") String jwt) throws Exception{
@@ -37,6 +42,17 @@ public class WalletController {
     Wallet receiverWallet = walletService.findWalletById(walletId);
     // wallet contains sender's wallet
     Wallet wallet = walletService.walletToWalletTransfer(senderUser, receiverWallet, req.getAmount());
+    return new ResponseEntity<>(wallet, HttpStatus.ACCEPTED);
+  }
+
+  @PutMapping("/api/wallet/order/{orderId}/pay")
+  public ResponseEntity<Wallet> payOrderPayment(
+      @RequestHeader("Authorization") String jwt,
+      @PathVariable Long orderId
+  ) throws Exception {
+    User user = userService.findUserProfileByJwt(jwt);
+    Order order = orderService.getOrderById(orderId);
+    Wallet wallet = walletService.payOrderPayment(order, user);
     return new ResponseEntity<>(wallet, HttpStatus.ACCEPTED);
   }
 }
