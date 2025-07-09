@@ -28,4 +28,40 @@ public class OrderItem {
   @JsonIgnore
   @OneToOne
   private Order order;
+
+  public Coin getCoin(){
+    return coin;
+  }
+
+  public double getBuyPrice() {
+    return buyPrice;
+  }
+
+  public double getSellPrice() {
+    return sellPrice;
+  }
+
+  public double getQuantity() {
+    return quantity;
+  }
+
+  public void setQuantity(double quantity) {
+    this.quantity = quantity;
+  }
+
+  public void setBuyPrice(double buyPrice) {
+    this.buyPrice = buyPrice;
+  }
+
+  public void setSellPrice(double sellPrice) {
+    this.sellPrice = sellPrice;
+  }
+
+  public void setOrder(Order order) {
+    this.order = order;
+  }
+
+  public void setCoin(Coin coin) {
+    this.coin = coin;
+  }
 }

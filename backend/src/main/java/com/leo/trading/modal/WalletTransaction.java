@@ -29,4 +29,8 @@ public class WalletTransaction {
   private String purpose;
 
   private Long amount;
+
+  public Long getAmount() {
+    return amount;
+  }
 }

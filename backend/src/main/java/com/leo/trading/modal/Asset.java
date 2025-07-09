@@ -18,4 +18,31 @@ public class Asset {
   @ManyToOne
   private User user;
 
+  public void setUser(User user) {
+    this.user = user;
+  }
+
+  public void setCoin(Coin coin) {
+    this.coin = coin;
+  }
+
+  public void setQuantity(double quantity) {
+    this.quantity = quantity;
+  }
+
+  public void setBuyPrice(double buyPrice) {
+    this.buyPrice = buyPrice;
+  }
+
+  public Long getId() {
+    return id;
+  }
+
+  public double getQuantity(){
+    return quantity;
+  }
+
+  public double getBuyPrice(){
+    return buyPrice;
+  }
 }

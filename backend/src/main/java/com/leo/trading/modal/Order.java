@@ -42,4 +42,48 @@ public class Order {
   // one order has only one order item (order > orderItem)
   @OneToOne (mappedBy = "order", cascade = CascadeType.ALL)
   private OrderItem orderItem;
+
+  public User getUser() {
+    return user;
+  }
+
+  public OrderType getOrderType() {
+    return orderType;
+  }
+
+  public BigDecimal getPrice() {
+    return price;
+  }
+
+  public LocalDateTime getTimestamp() {
+    return timestamp;
+  }
+
+  public OrderStatus getStatus() {
+    return status;
+  }
+
+  public void setUser(User user) {
+    this.user = user;
+  }
+
+  public void setOrderType(OrderType orderType) {
+    this.orderType = orderType;
+  }
+
+  public void setPrice(BigDecimal price) {
+    this.price = price;
+  }
+
+  public void setTimestamp(LocalDateTime timestamp) {
+    this.timestamp = timestamp;
+  }
+
+  public void setStatus(OrderStatus status) {
+    this.status = status;
+  }
+
+  public void setOrderItem(OrderItem orderItem) {
+    this.orderItem = orderItem;
+  }
 }

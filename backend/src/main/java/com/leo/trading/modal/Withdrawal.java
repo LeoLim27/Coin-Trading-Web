@@ -22,4 +22,24 @@ public class Withdrawal {
   private User user;
 
   private LocalDateTime date = LocalDateTime.now();
+
+  public Long getAmount(){
+    return amount;
+  }
+
+  public void setAmount(Long amount){
+    this.amount = amount;
+  }
+
+  public void setStatus(WithdrawalStatus status){
+    this.status = status;
+  }
+
+  public void setUser(User user){
+    this.user = user;
+  }
+
+  public void setDate(LocalDateTime date){
+    this.date = date;
+  }
 }
